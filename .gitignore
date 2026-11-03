@@ -1,0 +1,16 @@
+imdb-data/
+results/
+cache/
+spark-warehouse/
+artifacts/
+.venv/
+__pycache__/
+*.pyc
+*.log
+.idea/
+.vscode/
+*.tsv.gz
+*.pdf
+*.docx
+*.png
+*.crc
