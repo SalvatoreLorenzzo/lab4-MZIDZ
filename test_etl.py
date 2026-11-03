@@ -3,7 +3,7 @@ import tempfile
 from pathlib import Path
 
 from pyspark.sql import SparkSession
-from main import SCHEMAS, read_data
+from main import SCHEMAS, read_data, write_data
 from queries import QUERIES, prepare_views
 
 
@@ -58,6 +58,9 @@ try:
             stream.write('n5\t"Quoted name"\t\\N\t\\N\tactor\t\\N\n')
         row = read_data(spark, path, SCHEMAS['names'][1]).first()
         assert row.birthYear is None and row.primaryName == '"Quoted name"'
+        output = Path(directory) / 'roundtrip'
+        write_data(read_data(spark, path, SCHEMAS['names'][1]), output)
+        assert read_data(spark, output, SCHEMAS['names'][1]).first() == row
     print('PASS: all eight queries, boundary values, duplicates, seasons, ranks and TSV nulls')
 finally:
     spark.stop()
