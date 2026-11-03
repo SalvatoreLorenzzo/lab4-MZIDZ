@@ -52,3 +52,30 @@ python test_etl.py
 Репозиторій: https://github.com/SalvatoreLorenzzo/lab4-MZIDZ . Використано гілки main, develop і feature з Pull Requests.
 
 Документація: https://spark.apache.org/docs/3.5.8/sql-data-sources-csv.html , https://spark.apache.org/docs/3.5.8/sql-ref-syntax-qry-select-window.html .
+
+## Результати повного виконання
+
+Повний запуск: WSL Ubuntu 24.04, Python 3.12.3, Java 17.0.21, PySpark 3.5.8, local[4].
+
+| Джерело | Рядків |
+| --- | ---: |
+| title.akas.tsv.gz | 60,116,553 |
+| title.basics.tsv.gz | 12,921,360 |
+| name.basics.tsv.gz | 15,785,079 |
+| title.crew.tsv.gz | 12,921,360 |
+| title.episode.tsv.gz | 9,998,878 |
+| title.principals.tsv.gz | 102,618,736 |
+| title.ratings.tsv.gz | 1,728,431 |
+
+| Завдання | Рядків у TSV |
+| --- | ---: |
+| 1 | 37,194 |
+| 2 | 44,277 |
+| 3 | 45,803 |
+| 4 | 42,572,306 |
+| 5 | 100 |
+| 6 | 50 |
+| 7 | 140 |
+| 8 | 253 |
+
+Вихідні TSV записано Spark і повторно прочитано для підрахунку. Усі контрольні приклади пройдені; мутація межі тривалості виявлена тестом. Знімки консолі й повні результати зберігаються в локальній папці лабораторної.
